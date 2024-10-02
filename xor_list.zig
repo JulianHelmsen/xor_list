@@ -166,13 +166,13 @@ pub fn xor_list(comptime T : type) type {
             try writer.print("[", .{});
 
             if(i.next()) |f| {
-                std.debug.print("{any}", .{f.*});
+                try writer.print("{any}", .{f.*});
             }
 
             while(i.next()) |v| {
-                std.debug.print(", {any}", .{v.*});
+                try writer.print(", {any}", .{v.*});
             }
-            return writer.print("]", .{});
+            return try writer.print("]", .{});
         }
     };
 }
